@@ -1,16 +1,17 @@
 from typing import List
-import Card
+from src.Card import *
 import random
 
 class Deck:
-    def __init__(self, cards: List = []) -> None:
-        self.cards = cards
-        return
+    def __init__(self, numDecks: int = 1) -> None:
+        self.cards = []
 
-    # TODO change constructor to accept an integer which will represent the number of default decks that will form the deck.
-    # i.e., if a 3 is given, then the deck will contain 3 default decks
+        for i in range(0, numDecks):
+            # deck = self.makeDefaultDeck()
+            # self.cards += deck
+            self.cards += self.makeDefaultDeck()
 
-    def makeDefaultDeck(self) -> None: 
+    def makeDefaultDeck(self) -> List: 
         suits = ["SPADES", "HEARTS", "DIAMONDS", "CLUBS"]
         values = ["ACE", "TWO", "THREE", "FOUR", "FIVE", "SIX", "SEVEN", "EIGHT", "NINE", "TEN", 
                   "JACK", "QUEEN", "KING"]
@@ -18,10 +19,9 @@ class Deck:
 
         for i in suits:
             for j in values:
-                deck.append(Card.Card(i, j))
+                deck.append(Card(j, i))
 
-        self.cards = deck
-        return
+        return deck
 
     def shuffle(self) -> None:
         self.cards = random.sample(self.cards, len(self.cards))
@@ -38,6 +38,9 @@ class Deck:
 
     def dealCard(self) -> Card:
         return self.cards.pop()
+
+    def getSize(self) -> int:
+        return len(self.cards)
    
 
 

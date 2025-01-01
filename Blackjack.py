@@ -1,33 +1,53 @@
-import Deck, Player, Hand, Card
+from src.Deck import *
+from src.Player import *
+from src.Card import *
+import src.HouseRules as RULES
 
 def main():
-    # Make test player
-    Player1 = Player.Player("Player1", Hand.Hand(), 10.0)
+    Player1 = Player("Matt", [], 0, False)
+    Dealer = Player("Dealer", [], 0, False)
 
-    # Make a rogue ace (testing ace being 11 or 1 functionality)
-    rogueAce = Card.Card("SPADES", "ACE")
 
-    # Make a deck, give it the default 52 cards, then shuffle it
-    casinoDeck = Deck.Deck()
-    casinoDeck.makeDefaultDeck()
+    casinoDeck = Deck(RULES.NUM_DECKS_IN_SHOE)
     casinoDeck.shuffle()
 
-    # Deal Player1's hand of 3 cards
     Player1.addCardToHand(casinoDeck.dealCard())
     Player1.addCardToHand(casinoDeck.dealCard())
-    #Player1.addCardToHand(casinoDeck.dealCard())
 
-    # Print Player1
-    print(Player1.toString())
+    Dealer.addCardToHand(casinoDeck.dealCard())
+    Dealer.addCardToHand(casinoDeck.dealCard())
+    
 
-    # Add the rogue ace to Player1's hand twice
-    Player1.addCardToHand(rogueAce)
-    Player1.addCardToHand(rogueAce)
+    while not Player1.holdingBustedHand():
+        displayStatus(Player1)
+        print("\n\n")
+        displayDealerStatus(Dealer)
+        print("What will you do?")
+        print("1: Stand")
+        print("2: Hit")
+        action = input()
+        
+        if action == "2":
+            Player1.addCardToHand(casinoDeck.dealCard())
+        elif action == "1":
+            break
 
-    # Print Player1 again to see how the hand value changed when given 2 aces
-    print("\n\n", Player1.toString())
+
+def displayStatus(player: Player) -> None:
+    print("Current hand: ", player.getHand())
+    print("Value: ", str(player.getHandValue()))
+    print("Soft: ", str(player.handIsSoft()))
+    print("Splittable: ", str(player.handIsSplittable()))
+    return
+
+def displayDealerStatus(dealer) -> None:
+    print("Dealer showing: [", dealer.getFirstPositionCard().toString(), "]")
+    return
+
+
+
+
+
 
 if __name__ == "__main__":
     main()
-
-   

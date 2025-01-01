@@ -2,6 +2,6 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/.vs/Blackjack/FileContentIndex
-/.vs/
-/__pycache__/
+.vs/
+__pycache__/
+src/package/__pycache__/
