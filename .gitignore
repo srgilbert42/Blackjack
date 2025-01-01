@@ -4,4 +4,4 @@
 
 .vs/
 __pycache__/
-src/package/__pycache__/
+*.sqlite
