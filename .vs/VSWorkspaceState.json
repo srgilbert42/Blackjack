@@ -1,7 +1,11 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\.git",
+    "\\Local settings (.vs)\\Blackjack\\FileContentIndex",
+    "\\Local settings (.vs)\\Blackjack\\v17",
+    "\\__pycache__"
   ],
-  "SelectedNode": "\\C:\\Users\\Stuart\\Source\\Repos\\Blackjack",
+  "SelectedNode": "\\Player.py",
   "PreviewInSolutionExplorer": false
 }
