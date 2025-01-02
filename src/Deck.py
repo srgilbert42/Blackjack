@@ -7,8 +7,6 @@ class Deck:
         self.cards = []
 
         for i in range(0, numDecks):
-            # deck = self.makeDefaultDeck()
-            # self.cards += deck
             self.cards += self.makeDefaultDeck()
 
     def makeDefaultDeck(self) -> List: 

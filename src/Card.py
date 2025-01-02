@@ -7,6 +7,6 @@ class Card:
     def toString(self) -> str:
         return self.value + " of " + self.suit
 
-    def getValue(self) -> int:
+    def getValue(self) -> str:
         return self.value
 
