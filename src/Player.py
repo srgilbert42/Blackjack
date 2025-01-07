@@ -3,11 +3,11 @@ from src.Card import *
 from typing import List
 
 class Player:
-    def __init__(self, name: str = "", hand: List = [], money: float = 0.0, isStanding: bool = False) -> None:
+    def __init__(self, name: str = "", hand: List = [], money: float = 0.0, standing: bool = False) -> None:
         self.name = name
         self.hand = hand
         self.money = money
-        self.isStanding = isStanding
+        self.standing = standing
 
     def addMoney(self, amount: float) -> None:
         self.money += amount
@@ -78,11 +78,11 @@ class Player:
 
         return totalValue
 
-    def isStanding(self) -> bool:
-        return self.isStanding
+    def standing(self) -> bool:
+        return self.standing
 
     def resetState(self) -> None:
-        self.isStanding = False
+        self.standing = False
 
     def getFirstPositionCard(self) -> Card:
         return self.hand[0]
@@ -91,11 +91,6 @@ class Player:
         self.hand.cards = []
 
     def handIsSoft(self) -> bool:
-        # for card in self.hand:
-        #     if card.value == "ACE":
-        #         return True
-        # return False
-
         totalValue = 0
         numAces = 0
 
@@ -139,5 +134,9 @@ class Player:
                 return True
         return False
 
+    def becomesStanding(self) -> None:
+        self.standing = True
 
+    def isStanding(self) -> bool:
+        return self.standing == True
 
