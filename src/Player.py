@@ -7,7 +7,7 @@ class Player:
         self.name = name
         self.hand = hand
         self.money = money
-        self.standing = standing
+        self.standing = standing 
 
     def addMoney(self, amount: float) -> None:
         self.money += amount
@@ -33,7 +33,12 @@ class Player:
             string += "[ " + card.toString() + " ] "
         return string
 
-
+    def getHandBrief(self) -> str:
+        string = ""
+        for card in self.hand:
+            string += "[ " + card.getValue() + " ] "
+        return string
+        
     def toString(self) -> str:
         return " Name: " + self.name + "\nMoney: " + str(self.money) + "\n Hand: " + self.hand.toString() + "\n Value: " + str(self.hand.getHandValue())
     
@@ -42,6 +47,9 @@ class Player:
             return True
         else:
             return False
+
+    def getMoney(self) -> float:
+        return self.money
 
     def getHandValue(self) -> int:
         totalValue = 0
@@ -78,11 +86,12 @@ class Player:
 
         return totalValue
 
-    def standing(self) -> bool:
+    def getStanding(self) -> bool:
         return self.standing
 
     def resetState(self) -> None:
         self.standing = False
+        self.hand = []
 
     def getFirstPositionCard(self) -> Card:
         return self.hand[0]
@@ -139,4 +148,3 @@ class Player:
 
     def isStanding(self) -> bool:
         return self.standing == True
-

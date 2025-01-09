@@ -9,4 +9,3 @@ class Card:
 
     def getValue(self) -> str:
         return self.value
-
